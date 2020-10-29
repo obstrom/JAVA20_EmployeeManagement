@@ -36,4 +36,21 @@ public class MenuStatistics implements Menu {
         System.out.println("The highest salary in the company is: " + maxNumber);
 
     }
+    
+    protected void salaryLowest() { 
+        
+        //Specificera salary
+        ArrayList<Employee> findEmployeeById = new ArrayList<Employee>();
+     
+        ///Räknar ut lägsta lönen
+        int minNumber = findEmployeeById[0];
+
+        //Specifiera salary
+        for(int i = 0; i < findEmployeeById.length; i++){
+            if (findEmployeeById[i] < minNumber) {
+                minNumber = findEmployeeById[i];
+            }
+        }
+        System.out.println("The lowest salary in the company is: " + minNumber);  
+    }
 }
