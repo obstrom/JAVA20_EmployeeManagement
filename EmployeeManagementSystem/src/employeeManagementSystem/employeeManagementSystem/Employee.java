@@ -12,19 +12,20 @@ public abstract class Employee {
     private Date dateOfBirth;
     private Department department;
 
-    public Employee(int ID, String firstName, String lastName, int baseSalary, Gender gender, String dateOfBirthString, Department department) {
+    public Employee(int ID, String firstName, String lastName, int baseSalary, Gender gender, Date dateOfBirth, Department department) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.baseSalary = baseSalary;
         this.gender = gender;
         this.department = department;
+        this.dateOfBirth = dateOfBirth;
 
-        try {
+        /*try {
             this.dateOfBirth = new SimpleDateFormat("yy/MM/dd").parse(dateOfBirthString);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-        }
+        }*/
     }
 
     public int getID() {

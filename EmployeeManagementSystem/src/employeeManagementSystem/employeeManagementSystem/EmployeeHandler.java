@@ -1,11 +1,12 @@
 package employeeManagementSystem;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class EmployeeHandler {
     static private final ArrayList<Employee> ALL_EMPLOYEES = new ArrayList<Employee>();
 
-    public void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, String dateOfBirth, Department department) {
+    public static void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         switch (employeeCategory) {
             case MANAGER -> ALL_EMPLOYEES.add(new Manager(ID, firstName, lastName, salary, gender, dateOfBirth, department));
             case TECHNICIAN -> ALL_EMPLOYEES.add(new Technician(ID, firstName, lastName, salary, gender, dateOfBirth, department));

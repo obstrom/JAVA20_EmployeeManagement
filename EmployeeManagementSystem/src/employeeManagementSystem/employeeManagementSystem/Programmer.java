@@ -1,9 +1,11 @@
 package employeeManagementSystem;
 
+import java.util.Date;
+
 public class Programmer extends Employee {
     private static final double BONUS = 0.05;
 
-    Programmer(int ID, String firstName, String lastName, int salary, Gender gender, String dateOfBirth, Department department) {
+    Programmer(int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         super(ID, firstName, lastName, salary, gender, dateOfBirth, department);
     }
 
