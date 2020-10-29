@@ -46,6 +46,7 @@ public class EmployeeManagementSystem {
         for (Employee thisEmployee: tegnerEmployees) {
             System.out.println(thisEmployee.getFirstName() + " är en Tegner");
         }*/
+    hej
 
         startMenu();
 
