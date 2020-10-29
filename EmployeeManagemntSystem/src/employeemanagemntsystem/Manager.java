@@ -1,6 +1,8 @@
 package employeemanagemntsystem;
 
 public class Manager extends Employee {
+    private static final double BONUS = 0.08;
+
     Manager(int ID, String firstName, String lastName, int salary, Gender gender, String dateOfBirth, Department department) {
         super(ID, firstName, lastName, salary, gender, dateOfBirth, department);
     }
@@ -22,12 +24,18 @@ public class Manager extends Employee {
     }
 
     @Override
-    void updateSalary(int newSalary) {
-        super.setSalary(newSalary);
+    void updateBaseSalary(int newBaseSalary) {
+        super.setBaseSalary(newBaseSalary);
     }
 
     @Override
     void updateGender(Gender newGender) {
         super.setGender(newGender);
     }
+
+    @Override
+    double getBonus() {
+        return this.getBaseSalary() * BONUS;
+    }
+
 }
