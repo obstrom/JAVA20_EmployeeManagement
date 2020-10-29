@@ -53,4 +53,20 @@ public class MenuStatistics implements Menu {
         }
         System.out.println("The lowest salary in the company is: " + minNumber);  
     }
+    
+    protected void averageWage() { 
+        
+        //Specifiera salary och ID
+        ArrayList<Employee> allEmployees = new ArrayList<Employee>();
+
+        int total = 0; 
+        //Alla löner delat på antalet anställda.
+        //Kan lägga in total/(double)n); om det skulle bli decimalnummer 
+        for(i=0; i<n; i++) {
+            total += a[i];
+            System.out.println("Average: " + total/n); 
+        }    
+        
+    }
+
 }
