@@ -6,6 +6,8 @@ public class MenuStatistics implements Menu {
     public String findEmployeeByName(String nameToFind) {
         return null;
     }
+    
+    // Detta är en test
 
     @Override
     public int findEmployeeById(int idToFind) {
