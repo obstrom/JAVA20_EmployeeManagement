@@ -19,42 +19,47 @@ public class MenuStatistics implements Menu {
         return null;
     }
 
-    protected void salaryHighest() {
+    protected Employee findHighestSalaryEmployee() {
 
         //Hämta alla instanserade employees
         ArrayList<Employee> allEmployees = EmployeeHandler.getAllEmployees();
 
-        //Sparar högsta lönen
-        int maxNumber = 0;
+        //Sparar anställd med högst lön
+        Employee highestSalaryEmployee = null;
+        double highestFoundSalary = 0;
 
         //Specificera salary
         for (Employee thisEmployee: allEmployees) {
-            int salary = thisEmployee.getSalary();
-            if ( salary > maxNumber ) {
-                maxNumber = salary;
+            double salary = thisEmployee.getSalary();
+            if ( salary > highestFoundSalary ) {
+                highestSalaryEmployee = thisEmployee;
+                highestFoundSalary = thisEmployee.getSalary();
             }
         }
 
-        System.out.println("The highest salary in the company is: " + maxNumber);
+        return highestSalaryEmployee;
 
     }
 
-    protected void salaryLowest() {
+    protected Employee findLowestSalaryEmployee() {
 
         //Hämta alla instanserade employees
         ArrayList<Employee> allEmployees = EmployeeHandler.getAllEmployees();
 
-        //Sparar lägsta lönen
-        int minNumber = 0;
+        //Sparar anställd med lägst lön
+        Employee lowestSalaryEmployee = null;
+        double lowestFoundSalary = 0;
 
         //Specificera salary
         for (Employee thisEmployee: allEmployees) {
-            int salary = thisEmployee.getSalary();
-            if ( salary < minNumber ) {
-                minNumber = salary;
+            double salary = thisEmployee.getSalary();
+            if ( salary < lowestFoundSalary ) {
+                lowestSalaryEmployee = thisEmployee;
+                lowestFoundSalary = thisEmployee.getSalary();
             }
         }
 
-        System.out.println("The lowest salary in the company is: " + minNumber);
+        return lowestSalaryEmployee;
+
     }
 }
