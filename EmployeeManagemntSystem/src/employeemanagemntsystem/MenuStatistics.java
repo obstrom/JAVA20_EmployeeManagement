@@ -19,4 +19,21 @@ public class MenuStatistics implements Menu {
         return null;
     }
     
+     protected void salaryHighest() {
+        
+        //Specificera salary
+        ArrayList<Employee> findEmployeeById = new ArrayList<Employee>();
+        
+        //Räknar ut högsta lönen
+        int maxNumber = findEmployeeById[0];
+
+        //Specificera salary
+        for (int i = 0; i < findEmployeeById.length; i++) {
+            if (findEmployeeById[i] > maxNumber) {
+                maxNumber = findEmployeeById[i];
+            }
+        }
+        System.out.println("The highest salary in the company is: " + maxNumber);
+
+    }
 }
