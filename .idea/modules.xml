@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EmployeeManagementSystem/src/EmployeeManagementSystem.iml" filepath="$PROJECT_DIR$/EmployeeManagementSystem/src/EmployeeManagementSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EmployeeManagementSystem/EmployeeManagementSystemGit.iml" filepath="$PROJECT_DIR$/EmployeeManagementSystem/EmployeeManagementSystemGit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java20_EmployeeManagement.iml" filepath="$PROJECT_DIR$/.idea/Java20_EmployeeManagement.iml" />
+    </modules>
+  </component>
+</project>
