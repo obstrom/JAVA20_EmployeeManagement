@@ -15,6 +15,26 @@ public class EmployeeManagementSystem {
         handler.createNewEmployee(EmployeeCategory.TECHNICIAN, 3, "Stina", "Malmqvist", 40000, Gender.FEMALE, "78/06/21", Department.HR);
         handler.createNewEmployee(EmployeeCategory.MANAGER, 4, "Robert", "Tegner", 45000, Gender.MALE, "81/04/15", Department.HR);
         handler.createNewEmployee(EmployeeCategory.MANAGER, 5, "Martin", "Tegner", 47000, Gender.MALE, "72/12/02", Department.IT);
+         handler.createNewEmployee(EmployeeCategory.SECRETARY, 6, "Lisa", "Lundberg", 36000, Gender.FEMALE, "69/11/04", Department.HR);
+        handler.createNewEmployee(EmployeeCategory.SECRETARY, 7, "Eva", "Svenssonr", 33000, Gender.FEMALE, "45/09/11", Department.MARKETING);
+        handler.createNewEmployee(EmployeeCategory.PROGRAMMER, 8, "Clas", "Larsson", 52000, Gender.MALE, "56/11/06", Department.IT);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 9, "Elise", "Pettersson", 45000, Gender.UNSPECIFIED, "78/05/03", Department.ECONOMY);
+        handler.createNewEmployee(EmployeeCategory.PROGRAMMER, 10, "Kalle", "Ljungberg", 56000, Gender.MALE, "67/09/23", Department.IT);
+        handler.createNewEmployee(EmployeeCategory.SECRETARY, 11, "Olle", "Klasson", 34000, Gender.MALE, "89/01/02", Department.ECONOMY);
+        handler.createNewEmployee(EmployeeCategory.TECHNICIAN, 12, "Lotta", "Gabrielsson", 48000, Gender.UNSPECIFIED, "78/03/12", Department.IT);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 13, "Charlotte", "Persson", 60000, Gender.FEMALE, "76/04/13", Department.MANAGEMENT);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 14, "Liselotte", "Berg", 56000, Gender.UNSPECIFIED, "65/05/14", Department.MARKETING);
+        handler.createNewEmployee(EmployeeCategory.TECHNICIAN, 15, "Sven", "Ström", 38000, Gender.MALE, "72/06/24", Department.IT); 
+        handler.createNewEmployee(EmployeeCategory.SECRETARY, 16, "Emma", "Lind", 37000, Gender.FEMALE, "91/12/05", Department.MARKETING);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 17, "Oliver", "Sandberg", 62000, Gender.UNSPECIFIED, "73/02/02", Department.ECONOMY);
+        handler.createNewEmployee(EmployeeCategory.PROGRAMMER, 18, "Patrik", "Wallin", 56000, Gender.MALE, "71/05/19", Department.MANAGEMENT);
+        handler.createNewEmployee(EmployeeCategory.PROGRAMMER, 19, "Anna", "Eklund", 57000, Gender.FEMALE, "87/07/10", Department.MANAGEMENT);
+        handler.createNewEmployee(EmployeeCategory.TECHNICIAN, 20, "Linnea", "Holm", 24000, Gender.UNSPECIFIED, "96/10/23", Department.ECONOMY);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 21, "Adam", "Söderberg", 34000, Gender.MALE, "81/09/23", Department.MARKETING);
+        handler.createNewEmployee(EmployeeCategory.PROGRAMMER, 22, "Ida", "Nordström", 45000, Gender.FEMALE, "67/04/16", Department.ECONOMY);
+        handler.createNewEmployee(EmployeeCategory.SECRETARY, 23, "Martin", "Tegner", 23000, Gender.MALE, "97/09/15", Department.HR);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 24, "Lars", "Nyberg", 48000, Gender.MALE, "86/07/13", Department.HR);
+        handler.createNewEmployee(EmployeeCategory.MANAGER, 25, "Fia", "Viklund", 34000, Gender.UNSPECIFIED, "89/08/14", Department.HR);
 
         /*Employee employee2 = handler.findEmployee(2);
 
