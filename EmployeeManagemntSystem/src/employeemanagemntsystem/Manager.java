@@ -30,6 +30,4 @@ public class Manager extends Employee {
     void updateGender(Gender newGender) {
         super.setGender(newGender);
     }
-
-    //hejhej
 }
