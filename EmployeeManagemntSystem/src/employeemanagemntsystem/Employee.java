@@ -7,16 +7,16 @@ public abstract class Employee {
     private int ID;
     private String firstName;
     private String lastName;
-    private int salary;
+    private int baseSalary;
     private Gender gender;
     private Date dateOfBirth;
     private Department department;
 
-    public Employee(int ID, String firstName, String lastName, int salary, Gender gender, String dateOfBirthString, Department department) {
+    public Employee(int ID, String firstName, String lastName, int baseSalary, Gender gender, String dateOfBirthString, Department department) {
         this.ID = ID;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.salary = salary;
+        this.baseSalary = baseSalary;
         this.gender = gender;
         this.department = department;
 
@@ -47,8 +47,12 @@ public abstract class Employee {
         return getFirstName() + " " + getLastName();
     }
 
-    public int getSalary() {
-        return salary;
+    public double getSalary() {
+        return this.getBonus() + this.getBaseSalary();
+    }
+
+    public int getBaseSalary() {
+        return baseSalary;
     }
 
     public Gender getGender() {
@@ -71,8 +75,8 @@ public abstract class Employee {
         this.lastName = lastName;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public void setBaseSalary(int baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
     public void setGender(Gender gender) {
@@ -95,7 +99,8 @@ public abstract class Employee {
     abstract void updateName(String firstName, String LastName);
     abstract void updateDateOfBirth(String date);
     abstract void updateDepartment(Department newDepartment);
-    abstract void updateSalary(int newSalary);
+    abstract void updateBaseSalary(int newBaseSalary);
     abstract void updateGender(Gender newGender);
+    abstract double getBonus();
 
 }
