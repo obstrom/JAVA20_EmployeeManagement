@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class Programmer extends Employee {
     private static final double BONUS = 0.05;
+    private static final EmployeeCategory CATEGORY = EmployeeCategory.PROGRAMMER;
 
     Programmer(int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         super(ID, firstName, lastName, salary, gender, dateOfBirth, department);
@@ -39,5 +40,8 @@ public class Programmer extends Employee {
     double getBonus() {
         return this.getBaseSalary() * BONUS;
     }
+
+    @Override
+    EmployeeCategory getCategory() { return this.CATEGORY; }
     
 }

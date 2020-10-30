@@ -59,7 +59,7 @@ public class EmployeeHandler {
         return returnList;
     }
 
-    public void removeEmployee(Employee employee) {
+    public static void removeEmployee(Employee employee) {
         try {
             ALL_EMPLOYEES.remove(employee);
             System.out.println(employee.getFullName() + " has been removed.");

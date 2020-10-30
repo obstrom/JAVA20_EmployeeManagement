@@ -33,7 +33,9 @@ public class MenuStatistics implements Menu {
 
         //Sparar anställd med lägst lön
         Employee lowestSalaryEmployee = null;
-        double lowestFoundSalary = 0;
+
+        // Get salary from first employee as a starting point
+        double lowestFoundSalary = allEmployees.get(0).getSalary();
 
         //Specificera salary
         for (Employee thisEmployee: allEmployees) {

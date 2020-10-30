@@ -1,6 +1,7 @@
 package employeeManagementSystem;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class Employee {
@@ -92,6 +93,14 @@ public abstract class Employee {
         }
     }
 
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getDateOfBirthString() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(this.dateOfBirth);
+    }
+
     public void setDepartment(Department department) {
         this.department = department;
     }
@@ -103,5 +112,6 @@ public abstract class Employee {
     abstract void updateBaseSalary(int newBaseSalary);
     abstract void updateGender(Gender newGender);
     abstract double getBonus();
+    abstract EmployeeCategory getCategory();
 
 }
