@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class EmployeeHandler {
-    static private final ArrayList<Employee> ALL_EMPLOYEES = new ArrayList<Employee>();
+    static final ArrayList<Employee> ALL_EMPLOYEES = new ArrayList<Employee>();
 
-    public static void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
+    static void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         switch (employeeCategory) {
             case MANAGER -> ALL_EMPLOYEES.add(new Manager(ID, firstName, lastName, salary, gender, dateOfBirth, department));
             case TECHNICIAN -> ALL_EMPLOYEES.add(new Technician(ID, firstName, lastName, salary, gender, dateOfBirth, department));
@@ -15,11 +15,11 @@ public class EmployeeHandler {
         }
     }
 
-    public static ArrayList<Employee> getAllEmployees() {
+    static ArrayList<Employee> getAllEmployees() {
         return ALL_EMPLOYEES;
     }
 
-    public static Employee findEmployee(int employeeID) {
+    static Employee findEmployee(int employeeID) {
         Employee returnObject = null;
         for (Employee employee: ALL_EMPLOYEES) {
             if (employee.getID() == employeeID) {
@@ -29,7 +29,7 @@ public class EmployeeHandler {
         return returnObject;
     }
 
-    public static ArrayList<Employee> findEmployee(Department department) {
+    static ArrayList<Employee> findEmployee(Department department) {
         ArrayList<Employee> returnList = new ArrayList<Employee>();
         for (Employee employee: ALL_EMPLOYEES) {
             if (employee.getDepartment() == department) {
@@ -39,7 +39,7 @@ public class EmployeeHandler {
         return returnList;
     }
 
-    public static ArrayList<Employee> findEmployee(String name) {
+    static ArrayList<Employee> findEmployee(String name) {
         ArrayList<Employee> returnList = new ArrayList<Employee>();
         for (Employee employee: ALL_EMPLOYEES) {
             if (employee.getFullName().toLowerCase().contains(name.toLowerCase())) {
@@ -49,7 +49,7 @@ public class EmployeeHandler {
         return returnList;
     }
 
-    public static ArrayList<Employee> findEmployee(Gender gender) {
+    static ArrayList<Employee> findEmployee(Gender gender) {
         ArrayList<Employee> returnList = new ArrayList<Employee>();
         for (Employee employee: ALL_EMPLOYEES) {
             if (employee.getGender() == gender) {
@@ -59,7 +59,7 @@ public class EmployeeHandler {
         return returnList;
     }
 
-    public static void removeEmployee(Employee employee) {
+    static void removeEmployee(Employee employee) {
         try {
             ALL_EMPLOYEES.remove(employee);
             System.out.println(employee.getFullName() + " has been removed.");
@@ -67,5 +67,4 @@ public class EmployeeHandler {
             System.out.println("No employee to remove.");
         }
     }
-
 }
