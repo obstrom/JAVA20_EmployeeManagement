@@ -1,5 +1,7 @@
 package employeeManagementSystem;
 
+// Enum som representerar dem olika Categories av Employee som finns för menyval.
+// toString funktion för att kunna skriva ut dem snyggt
 public enum EmployeeCategory {
     MANAGER {
         @Override

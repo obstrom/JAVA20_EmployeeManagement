@@ -1,5 +1,7 @@
 package employeeManagementSystem;
 
+// Enum som representerar dem olika Departments som finns.
+// toString funktion för att kunna skriva ut dem snyggt
 public enum Department {
     IT {
         @Override

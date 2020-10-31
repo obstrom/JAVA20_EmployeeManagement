@@ -1,9 +1,9 @@
 package employeeManagementSystem;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 
+// Super-klass till Manager, Programmer, Secretary och Technician
 public abstract class Employee {
     private int ID;
     private String firstName;
@@ -13,6 +13,7 @@ public abstract class Employee {
     private Date dateOfBirth;
     private Department department;
 
+    // Konstruktor som sätter alla start värden
     public Employee(int ID, String firstName, String lastName, int baseSalary, Gender gender, Date dateOfBirth, Department department) {
         this.ID = ID;
         this.firstName = firstName;
@@ -29,6 +30,7 @@ public abstract class Employee {
         }*/
     }
 
+    // :: GETTERS
     public int getID() {
         return ID;
     }
@@ -61,10 +63,17 @@ public abstract class Employee {
         return gender;
     }
 
+    // Getter för dateOfBirth som skickar tillbaka ett dateObjekt
     public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
+    // Alternativ getter för dateOfBirth som skickar tillbaka en printbar String
+    public String getDateOfBirthString() {
+        return new SimpleDateFormat("dd/MM/yyyy").format(this.dateOfBirth);
+    }
+
+    // :: SETTERS
     public void setID(int ID) {
         this.ID = ID;
     }
@@ -85,6 +94,16 @@ public abstract class Employee {
         this.gender = gender;
     }
 
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    // Setter för dateOfBirth om man har ett Date-objekt
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    // Alternativ setter för dateOfBirth om man har en String (Method Overloading)
     public void setDateOfBirth(String dateOfBirthString) {
         try {
             this.dateOfBirth = new SimpleDateFormat("dd/MM/yyyy").parse(dateOfBirthString);
@@ -93,19 +112,8 @@ public abstract class Employee {
         }
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getDateOfBirthString() {
-        return new SimpleDateFormat("dd/MM/yyyy").format(this.dateOfBirth);
-    }
-
-    public void setDepartment(Department department) {
-        this.department = department;
-    }
-
-    // Abstrakta metoder
+    // :: ABSTRAKTA METODER
+    // Alla metoder som subklasser till Employee behöver implementera
     abstract void updateName(String firstName, String LastName);
     abstract void updateDateOfBirth(String date);
     abstract void updateDepartment(Department newDepartment);

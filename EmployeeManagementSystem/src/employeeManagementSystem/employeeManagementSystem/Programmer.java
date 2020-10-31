@@ -2,14 +2,18 @@ package employeeManagementSystem;
 
 import java.util.Date;
 
+// Sub-klass till Employee
 public class Programmer extends Employee {
-    private static final double BONUS = 0.05;
-    private static final EmployeeCategory CATEGORY = EmployeeCategory.PROGRAMMER;
+    private static final double BONUS = 0.05; // Bonus = +5%
+    private static final EmployeeCategory CATEGORY = EmployeeCategory.PROGRAMMER; // Enum för att hantera Programmer som ett val
 
+    // Konstruktor som tar in värden för sub-klassen och skickar upp dem till super-klassens konstruktor
     Programmer(int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         super(ID, firstName, lastName, salary, gender, dateOfBirth, department);
     }
 
+    // :: METHODS
+    // "Update" metoder som ropar på Super-klassens setter metoder
     @Override
     void updateName(String firstName, String LastName) {
         super.setFirstName(firstName);
@@ -36,12 +40,13 @@ public class Programmer extends Employee {
         super.setGender(newGender);
     }
 
+    // :: GETTERS
     @Override
     double getBonus() {
         return this.getBaseSalary() * BONUS;
     }
 
     @Override
-    EmployeeCategory getCategory() { return this.CATEGORY; }
+    EmployeeCategory getCategory() { return CATEGORY; }
     
 }

@@ -3,9 +3,14 @@ package employeeManagementSystem;
 import java.util.ArrayList;
 import java.util.Date;
 
+// Utility eller Helper-klass för Employee som bara innehåller statiska attribut och metoder.
 public class EmployeeHandler {
+    // ArrayList för att lagra alla nuvarande Employees.
+    // Listan uppdateras när Employees tas bort och läggs till.
     static final ArrayList<Employee> ALL_EMPLOYEES = new ArrayList<Employee>();
 
+    // Metod för att skapa en ny Employee som även tar en Enum
+    // för vilken category (subklass av Employee) som ska skapas
     static void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         switch (employeeCategory) {
             case MANAGER:
@@ -23,10 +28,14 @@ public class EmployeeHandler {
         }
     }
 
+    // Getter för ArrayList med alla Employees
     static ArrayList<Employee> getAllEmployees() {
         return ALL_EMPLOYEES;
     }
 
+    // :: FIND EMPLOYEE METHODS
+    // Method Overloading av för att hitta Employee i ArrayList
+    // utifrån olika inputs (ID, Department, Name, Gender)
     static Employee findEmployee(int employeeID) {
         Employee returnObject = null;
         for (Employee employee: ALL_EMPLOYEES) {
@@ -67,6 +76,9 @@ public class EmployeeHandler {
         return returnList;
     }
 
+    // :: REMOVE EMPLOYEE
+    // Tar ett Employee objekt som argument och försöker
+    // ta bort den ifrån ArrayList med alla Employees
     static void removeEmployee(Employee employee) {
         try {
             ALL_EMPLOYEES.remove(employee);
