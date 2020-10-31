@@ -71,6 +71,7 @@ public class EmployeeManagementSystem {
                 System.out.println("Statistics selected" + newLine);
                 MenuStatistics.statisticsMenu();
             } else if (userInput.contains("3") || userInput.contains("exit") || userInput.contains("quit")) {
+                System.out.println("Thank you for using our EmployeeManagementSystem");
                 break;
             } else { // Om ingen match hittas, visa felmeddelande
                 System.out.println("Unknown input. Try again!" + newLine);
