@@ -6,10 +6,6 @@ import java.util.Scanner;
 
 public class EmployeeManagementSystem {
 
-    public enum searchOptions {
-        REMOVE, UPDATE, SEARCH;
-    }
-
     static EmployeeHandler handler = new EmployeeHandler();
     static String boldTextStart = "\033[1m";
     static String regularTextStart = "\033[0m";

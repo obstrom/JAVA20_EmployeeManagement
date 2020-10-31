@@ -8,10 +8,18 @@ public class EmployeeHandler {
 
     static void createNewEmployee(EmployeeCategory employeeCategory, int ID, String firstName, String lastName, int salary, Gender gender, Date dateOfBirth, Department department) {
         switch (employeeCategory) {
-            case MANAGER -> ALL_EMPLOYEES.add(new Manager(ID, firstName, lastName, salary, gender, dateOfBirth, department));
-            case TECHNICIAN -> ALL_EMPLOYEES.add(new Technician(ID, firstName, lastName, salary, gender, dateOfBirth, department));
-            case SECRETARY -> ALL_EMPLOYEES.add(new Secretary(ID, firstName, lastName, salary, gender, dateOfBirth, department));
-            case PROGRAMMER -> ALL_EMPLOYEES.add(new Programmer(ID, firstName, lastName, salary, gender, dateOfBirth, department));
+            case MANAGER:
+                ALL_EMPLOYEES.add(new Manager(ID, firstName, lastName, salary, gender, dateOfBirth, department));
+                break;
+            case TECHNICIAN:
+                ALL_EMPLOYEES.add(new Technician(ID, firstName, lastName, salary, gender, dateOfBirth, department));
+                break;
+            case SECRETARY:
+                ALL_EMPLOYEES.add(new Secretary(ID, firstName, lastName, salary, gender, dateOfBirth, department));
+                break;
+            case PROGRAMMER:
+                ALL_EMPLOYEES.add(new Programmer(ID, firstName, lastName, salary, gender, dateOfBirth, department));
+                break;
         }
     }
 

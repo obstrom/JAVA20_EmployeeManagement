@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class MenuEmployeeSystem implements Menu {
+
     static String boldTextStart = "\033[1m";
     static String regularTextStart = "\033[0m";
     static String newLine = "\n";
@@ -48,20 +49,20 @@ public class MenuEmployeeSystem implements Menu {
             } else if (userInput.contains("2") || userInput.contains("remove")) {
                 System.out.println("Remove employee selected\n");
                 System.out.println("\033[1mRemove employee\033[0m");
-                searchForEmployeeMenu(EmployeeManagementSystem.searchOptions.REMOVE);
+                searchForEmployeeMenu(SearchOption.REMOVE);
                 continue;
             } else if (userInput.contains("3") || userInput.contains("update")) {
                 // Gå till meny för att välja Employee
                 // Visa meny för att uppdatera Employee
                 System.out.println("Update employee selected\n");
                 System.out.println("\033[1mUpdate employee\033[0m");
-                searchForEmployeeMenu(EmployeeManagementSystem.searchOptions.UPDATE);
+                searchForEmployeeMenu(SearchOption.UPDATE);
                 continue;
             } else if (userInput.contains("4") || userInput.contains("search")) {
                 // Gå till meny för att sök efter en/flera Employee
                 System.out.println("Search for employee selected\n");
                 System.out.println("\033[1mSearch for employee\033[0m");
-                searchForEmployeeMenu(EmployeeManagementSystem.searchOptions.SEARCH);
+                searchForEmployeeMenu(SearchOption.SEARCH);
                 continue;
             } else if (userInput.contains("5") || userInput.contains("display") || userInput.contains("all")) {
                 System.out.println("\nDisplay all employees selected");
@@ -253,7 +254,7 @@ public class MenuEmployeeSystem implements Menu {
         return returnCategory;
     }
 
-    public static void searchForEmployeeMenu(EmployeeManagementSystem.searchOptions option) {
+    public static void searchForEmployeeMenu(SearchOption option) {
         System.out.println("1-Find employee by ID");
         System.out.println("2-Find employee by exact name");
 
@@ -278,7 +279,7 @@ public class MenuEmployeeSystem implements Menu {
         }
     }
 
-    public static void searchForEmployeeMenuAction(EmployeeManagementSystem.searchOptions option, Employee employee) {
+    public static void searchForEmployeeMenuAction(SearchOption option, Employee employee) {
         switch (option) {
             case REMOVE:
                 EmployeeHandler.removeEmployee(employee);
