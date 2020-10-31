@@ -79,7 +79,6 @@ public class MenuEmployeeSystem {
                 printAllEmployees();
 
             } else if (userInput.equals("0") || userInput.contains("exit") || userInput.contains("quit")) {
-                System.out.println("Thank you for using our EmployeeManagementSystem");
                 break; // Gå tillbaka till start menu
             } else {
                 System.out.println("Unknown input. Try again!" + newLine);
@@ -365,8 +364,7 @@ public class MenuEmployeeSystem {
                     employee.setDepartment(newDepartment);
                     System.out.println(employee.getFullName() + " department changed to " + employee.getDepartment());
                     break;
-                } else if (userInput.equals("0") || userInput.contains("return") || userInput.contains("exit")) {
-                    System.out.println("Thank you for using our EmployeeManagementSystem");
+                } else if (userInput.equals("0") || userInput.contains("return") || userInput.contains("exit"))
                     break updateMenuLoop;
                 } else {
                     System.out.println("Unknown input. Try again!" + newLine);
