@@ -64,13 +64,13 @@ public class EmployeeManagementSystem {
             String userInput = scan.nextLine().toLowerCase(); // Omvandla input till lower case för jämförelse
 
             // Hantera input val
-            if (userInput.contains("1") || userInput.contains("management")) {
+            if (userInput.equals("1") || userInput.contains("management")) {
                 System.out.println("Management selected" + newLine);
                 MenuEmployeeSystem.employeeMenu();
-            } else if (userInput.contains("2") || userInput.contains("statistics")) {
+            } else if (userInput.equals("2") || userInput.contains("statistics")) {
                 System.out.println("Statistics selected" + newLine);
                 MenuStatistics.statisticsMenu();
-            } else if (userInput.contains("3") || userInput.contains("exit") || userInput.contains("quit")) {
+            } else if (userInput.equals("3") || userInput.contains("exit") || userInput.contains("quit")) {
                 System.out.println("Thank you for using our EmployeeManagementSystem");
                 break;
             } else { // Om ingen match hittas, visa felmeddelande

@@ -27,7 +27,7 @@ public class MenuStatistics {
             String userInput = scan.nextLine().toLowerCase(); // Omvandla input till lower case för jämförelse
 
             // Hantera input val
-            if (userInput.contains("1") || userInput.contains("average")) {
+            if (userInput.equals("1") || userInput.contains("average")) {
 
                 // Loop igenom alla användare och summera deras lön
                 ArrayList<Employee> allEmployees = EmployeeHandler.getAllEmployees();
@@ -40,19 +40,19 @@ public class MenuStatistics {
                 double averageSalary = (double) salarySum / allEmployees.size();
                 System.out.println(newLine + "Average salary in company is: " + averageSalary + newLine);
 
-            } else if (userInput.contains("2") || userInput.contains("highest")) {
+            } else if (userInput.equals("2") || userInput.contains("highest")) {
 
                 MenuStatistics statistics = new MenuStatistics();
                 Employee employee = statistics.findHighestSalaryEmployee();
                 System.out.println(newLine + employee.getFullName() + " has the highest salary with " + employee.getSalary() + " SEK" + newLine);
 
-            } else if (userInput.contains("3") || userInput.contains("lowest")) {
+            } else if (userInput.equals("3") || userInput.contains("lowest")) {
 
                 MenuStatistics statistics = new MenuStatistics();
                 Employee employee = statistics.findLowestSalaryEmployee();
                 System.out.println(newLine + employee.getFullName() + " has the lowest salary with " + employee.getSalary()  + " SEK" + newLine);
 
-            } else if (userInput.contains("4") || userInput.contains("bonus")) {
+            } else if (userInput.equals("4") || userInput.contains("bonus")) {
 
                 // Loop igenom alla användare och summeras deras bonus
                 ArrayList<Employee> allEmployees = EmployeeHandler.getAllEmployees();
@@ -64,7 +64,7 @@ public class MenuStatistics {
                 // Skriv ut total summan av bonusen
                 System.out.println(newLine + "Total bonus in company is " + totalBonusSum + " SEK" + newLine);
 
-            } else if (userInput.contains("0") || userInput.contains("exit") || userInput.contains("quit")) {
+            } else if (userInput.equals("0") || userInput.contains("exit") || userInput.contains("quit")) {
                 break; // Gå tillbaka till start menu
             } else {
                 System.out.println("Unknown input. Try again!\n");
