@@ -22,12 +22,6 @@ public abstract class Employee {
         this.gender = gender;
         this.department = department;
         this.dateOfBirth = dateOfBirth;
-
-        /*try {
-            this.dateOfBirth = new SimpleDateFormat("yy/MM/dd").parse(dateOfBirthString);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }*/
     }
 
     // :: GETTERS
@@ -120,6 +114,7 @@ public abstract class Employee {
     abstract void updateBaseSalary(int newBaseSalary);
     abstract void updateGender(Gender newGender);
     abstract double getBonus();
+    abstract double getBonusPercentageDecimal();
     abstract EmployeeCategory getCategory();
 
 }

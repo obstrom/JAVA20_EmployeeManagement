@@ -47,6 +47,9 @@ public class Programmer extends Employee {
     }
 
     @Override
+    double getBonusPercentageDecimal() { return BONUS; }
+
+    @Override
     EmployeeCategory getCategory() { return CATEGORY; }
     
 }

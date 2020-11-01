@@ -33,8 +33,8 @@ public class MenuEmployeeSystem {
 
                 // Hämta från användaren data om den nya Employee för alla attribut
                 int id = getNewEmployeeID();
-                String firstName = getNewEmployeeFirstName();
-                String lastName = getNewEmployeeLastName();
+                String firstName = getNewEmployeeName("Enter employee first name: ");
+                String lastName = getNewEmployeeName("Enter employee last name: ");
                 int salary = getNewEmployeeSalary();
                 Gender gender = getNewEmployeeGender();
                 Date dateOfBirth = getNewEmployeeDateOfBirth();
@@ -51,7 +51,7 @@ public class MenuEmployeeSystem {
 
                 // Gå till dynamisk submenu för att välja Employee
                 // Med handlingen att ta bort en Employee
-                searchForEmployeeMenu(SearchOption.REMOVE);
+                searchForEmployeeMenu(SearchOption.REMOVE); // Skicka in REMOVE enum som option
 
             } else if (userInput.equals("3") || userInput.contains("update")) {
 
@@ -60,7 +60,7 @@ public class MenuEmployeeSystem {
 
                 // Gå till dynamisk submenu för att välja Employee
                 // Med handlingen att uppdatera en Employee
-                searchForEmployeeMenu(SearchOption.UPDATE);
+                searchForEmployeeMenu(SearchOption.UPDATE); // Skicka in UPDATE enum som option
 
             } else if (userInput.equals("4") || userInput.contains("search")) {
 
@@ -69,7 +69,7 @@ public class MenuEmployeeSystem {
 
                 // Gå till dynamisk submenu för att välja Employee
                 // Med handlingen att granska en Employee
-                searchForEmployeeMenu(SearchOption.SEARCH);
+                searchForEmployeeMenu(SearchOption.SEARCH); // Skicka in SEARCH enum som option
 
             } else if (userInput.equals("5") || userInput.contains("display") || userInput.contains("all")) {
 
@@ -87,6 +87,7 @@ public class MenuEmployeeSystem {
 
     }
 
+    // Metod för att skriva ut alla employees i systemet
     public static void printAllEmployees() {
 
         // Loop igenom alla Employee och skriv ut en lista på deras ID och namn
@@ -97,22 +98,30 @@ public class MenuEmployeeSystem {
 
     }
 
+    // Metod för att ta ett nytt ID från användaren
     public static int getNewEmployeeID() {
 
-        int newID = 0;
+        int newID = 0; // Skapa start värde
+
         while (true) {
+
+            // Ta input från användaren
             System.out.print("Enter employee ID: ");
             Scanner scan = new Scanner(System.in);
 
             try {
+                // Försök att omvandla input till en int
                 newID = Integer.parseInt(scan.nextLine());
+
+                // Hämta ID för int och kolla om ID redan är taget
                 if ( EmployeeHandler.findEmployee(newID) != null ) {
-                    throw new ArrayStoreException();
+                    throw new ArrayStoreException(); // Om det är taget, skapa ett error
                 }
-            } catch (NumberFormatException e) {
+
+            } catch (NumberFormatException e) { // Fånga error om input inte är en int
                 System.out.println("ID needs to be a whole number. Try again!");
                 continue;
-            } catch (ArrayStoreException e) {
+            } catch (ArrayStoreException e) { // Fånga error om ID redan är taget
                 System.out.println("ID is taken. Try again!");
                 continue;
             }
@@ -122,41 +131,44 @@ public class MenuEmployeeSystem {
 
     }
 
-    public static String getNewEmployeeFirstName() {
-        System.out.print("Enter employee first name: ");
+    // Metod för att ta ett förnamn eller efternamn från användaren
+    // Tar ett argument med texten som ska skrivas ut
+    public static String getNewEmployeeName(String printMessage) {
+        System.out.print(printMessage);
+
+        // Ta input från användaren
         Scanner scan = new Scanner(System.in);
         String userInputFirstName = scan.nextLine();
 
         return userInputFirstName;
     }
 
-    public static String getNewEmployeeLastName() {
-        System.out.print("Enter employee last name: ");
-        Scanner scan = new Scanner(System.in);
-        String userInputLastName = scan.nextLine();
-
-        return userInputLastName;
-    }
-
+    // Metod för att ta en ny grundlön från användaren
     public static int getNewEmployeeSalary() {
-        int salary = 0;
+        int salary = 0; // Start värde
         while (true) {
-            System.out.print("Enter salary: ");
+
+            // Ta input från användaren
+            System.out.print("Enter base salary: ");
             Scanner scan = new Scanner(System.in);
 
             try {
+                // Försök att omvandla input till en int
                 salary = Integer.parseInt(scan.nextLine());
-            } catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {  // Fånga error om input inte är en int
                 System.out.println("Salary needs to be a whole number. Try again!");
-                continue;
+                continue; // Börja om loopen från början
             }
             break;
         }
         return salary;
     }
 
+    // Metod för att ta ett gender från användaren
     public static Gender getNewEmployeeGender() {
-        Gender returnGender = null;
+        Gender returnGender = null; // Start värde
+
+        // Skriv ut valen
         System.out.println("Enter employee gender");
         System.out.println("1-Male");
         System.out.println("2-Female");
@@ -165,8 +177,12 @@ public class MenuEmployeeSystem {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+            // Ta input ifrån användaren
             String userInput = scan.nextLine().toLowerCase();
 
+            // Kolla om input stämmer mot något av valen
+            // Sätt isåfall start värde till valets korresponderande Gender enum keyword
+            // Om det inte matchar något, ge om ny input och kör igen
             if (userInput.contains("1") || userInput.contains("male")) {
                 returnGender = Gender.MALE;
                 break;
@@ -184,24 +200,31 @@ public class MenuEmployeeSystem {
         return returnGender;
     }
 
+    // Metod för att ta ett datum från användaren
     public static Date getNewEmployeeDateOfBirth() {
-        Date returnDate = null;
+        Date returnDate = null; // Start värde
         while (true) {
+
+            // Ta input ifrån användaren
             System.out.print("Enter employee date of birth (yy/mm/dd): ");
             Scanner scan = new Scanner(System.in);
 
             try {
+                // Försök att omvandla input String till ett Date-objekt
                 returnDate = new SimpleDateFormat("yy/MM/dd").parse(scan.nextLine());
                 break;
-            } catch (ParseException e) {
+            } catch (ParseException e) { // Formatet matchar inte ett datum för Date-objekt
                 System.out.println("Date format is wrong. Try again!");
             }
         }
         return returnDate;
     }
 
+    // Metod för att ta ett Department från användaren
     public static Department getNewEmployeeDepartment() {
-        Department returnDepartment = null;
+        Department returnDepartment = null; // Start värde
+
+        // Skriv ut valen
         System.out.println("Enter employee department");
         System.out.println("1-Management");
         System.out.println("2-Marketing");
@@ -212,8 +235,12 @@ public class MenuEmployeeSystem {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+            // Ta input från användaren
             String userInput = scan.nextLine().toLowerCase();
 
+            // Kolla om input stämmer mot något av valen
+            // Sätt isåfall start värde till valets korresponderande Gender enum keyword
+            // Om det inte matchar något, ge om ny input och kör igen
             if (userInput.equals("1") || userInput.contains("management")) {
                 returnDepartment = Department.MANAGEMENT;
                 break;
@@ -237,8 +264,11 @@ public class MenuEmployeeSystem {
         return returnDepartment;
     }
 
+    // Metod för att ta ett Category från användaren
     public static EmployeeCategory getNewEmployeeCategory() {
-        EmployeeCategory returnCategory = null;
+        EmployeeCategory returnCategory = null; // Start värde
+
+        // Skriv ut valen
         System.out.println("Enter employee category");
         System.out.println("1-Manager");
         System.out.println("2-Programmer");
@@ -248,8 +278,13 @@ public class MenuEmployeeSystem {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+
+            // Ta input från användaren
             String userInput = scan.nextLine().toLowerCase();
 
+            // Kolla om input stämmer mot något av valen
+            // Sätt isåfall start värde till valets korresponderande Gender enum keyword
+            // Om det inte matchar något, ge om ny input och kör igen
             if (userInput.equals("1") || userInput.contains("manager")) {
                 returnCategory = EmployeeCategory.MANAGER;
                 break;
@@ -270,6 +305,66 @@ public class MenuEmployeeSystem {
         return returnCategory;
     }
 
+    // Metod för att hitta en Employee från ett ID
+    // Skickar tillbaka null om ID inte finns
+    public static Employee getEmployeeByIDFromInput() {
+        Employee returnObject = null; // Start värde
+        System.out.println(newLine + "Enter employee ID: ");
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            try {
+                // Ta värde ifrån användaren
+                String userInput = scan.nextLine();
+
+                // Försök omvandla input till int
+                int inputID = Integer.parseInt(userInput);
+
+                // Ropa på getter som tar ett ID och skriv över start värdet
+                // Värdet förblir null om ID inte finns
+                returnObject = EmployeeHandler.findEmployee(inputID);
+                break;
+            } catch (NumberFormatException e) { // Error om input inte är en int
+                System.out.println("ID needs to be a whole number! Try again");
+            }
+        }
+
+        return returnObject;
+    }
+
+    // Metod för att hitta en Employee från ett för- eller efternamn
+    // Skickar tillbaka null om ingen match hittas
+    public static Employee getEmployeeByNameFromInput() {
+        Employee returnObject = null; // Start värde
+        System.out.println("\nEnter employees exact name: ");
+        Scanner scan = new Scanner(System.in);
+
+        while (true) {
+            // Ta värde ifrån användaren
+            String userInput = scan.nextLine();
+
+            // Ropa på getter som tar delar av ett namn och skickar tillbaka en ArrayList med alla matchningar
+            // Listan blir tomm om ingen match hittades
+            ArrayList<Employee> resultList = EmployeeHandler.findEmployee(userInput);
+
+            // Kolla om listan är tomm
+            if (resultList.isEmpty()) {
+                // Tomm lista. Skriv ut felmeddelande och börja om
+                System.out.println("No employee found! Try again");
+            } else {
+                // Listan innehåller en eller flera Employee-objekt
+                // Skicka tillbaka första Employee-objektet i listan
+                returnObject = resultList.get(0);
+                break;
+            }
+        }
+
+        return returnObject;
+    }
+
+    // Dynamisk metod för att hitta en Employee baserat på ID eller Namn
+    // Används av Remove, Update och Search for employee
+    // Tar ett argument för vilken handling (Remove, Update, Search) som ska tas
     public static void searchForEmployeeMenu(SearchOption option) {
         System.out.println("1-Find employee by ID");
         System.out.println("2-Find employee by exact name");
@@ -277,16 +372,30 @@ public class MenuEmployeeSystem {
         Scanner scan = new Scanner(System.in);
 
         while (true) {
+            // Ta input från användaren
             String userInput = scan.nextLine().toLowerCase();
 
+            // Kolla om input stämmer mot något av valen
             if (userInput.equals("1") || userInput.contains("id")) {
+
+                // Hämta employee-objektet med ID
                 Employee employee = getEmployeeByIDFromInput();
+
+                // Skriv ut namnet på Employee som valts
                 System.out.println(employee.getFullName() + " has been selected." + newLine);
+
+                // Skicka vidare meny val och Employee-objekt till nästa metod
                 searchForEmployeeMenuAction(option, employee);
                 break;
             } else if (userInput.equals("2") || userInput.contains("name")) {
+
+                // Hämta första employee-objekt med namn som matchar
                 Employee employee = getEmployeeByNameFromInput();
+
+                // Skriv ut namnet på Employee som valts
                 System.out.println(employee.getFullName() + " has been selected." + newLine);
+
+                // Skicka vidare meny val och Employee-objekt till nästa metod
                 searchForEmployeeMenuAction(option, employee);
                 break;
             } else {
@@ -295,24 +404,37 @@ public class MenuEmployeeSystem {
         }
     }
 
+    // Dynamisk metod för att visa meny för Remove, Update eller Search for Employee
+    // Tar meny val (enum keyword) och Employee-objekt från föregående metod
     public static void searchForEmployeeMenuAction(SearchOption option, Employee employee) {
+
+        // Switch som ropar på rätt meny metod
+        // Tar enum keyword för menyval
         switch (option) {
             case REMOVE: {
+                // Ta bort Employee-objekt från ArrayListan med alla employees
                 EmployeeHandler.removeEmployee(employee);
             }
             case UPDATE: {
+                // Ropa på metod för "update employee" menyn
+                // Skickar vidare vald Employee-objekt
                 updateEmployeeMenu(employee);
                 break;
             }
             case SEARCH: {
+                // Ropa på metod för "search for employee" menyn
+                // Skickar vidare vald Employee-objekt
                 employeeDisplayMenu(employee);
                 break;
             }
         }
     }
 
+    // Metod för menyn "Update employee"
+    // Tar vald Employee som ska uppdateras som ett argument
     public static void updateEmployeeMenu(Employee employee) {
-        updateMenuLoop:
+
+        updateMenuLoop: // Keyword för att kunna break nested-loop meny
         while (true) {
             System.out.println(newLine + boldTextStart + "Select action" + regularTextStart);
             System.out.println("1-Update ID");
@@ -322,105 +444,115 @@ public class MenuEmployeeSystem {
             System.out.println("5-Update date of birth");
             System.out.println("6-Update base salary");
             System.out.println("7-Update department");
-            System.out.println("0-Return to main menu");
+            System.out.println("0-Return to Employee Management menu");
 
             Scanner scan = new Scanner(System.in);
 
             while (true) {
+                // Ta input från användaren
                 String userInput = scan.nextLine().toLowerCase();
 
+                // Kolla om input stämmer mot något av valen
                 if (userInput.equals("1") || userInput.contains("id")) {
+
+                    // Ropa på metod för att fråga användaren efter ett ID
                     int newID = getNewEmployeeID();
+
+                    // Sätt nytt ID för vald Employee
                     employee.setID(newID);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + "'s ID has been updated to " + newID);
                     break;
                 } else if (userInput.equals("2") || userInput.contains("first name")) {
-                    String newFirstName = getNewEmployeeFirstName();
+
+                    // Ropa på metod för att fråga användaren efter ett förnamn
+                    String newFirstName = getNewEmployeeName("\"Enter employee first name: \"");
+
+                    // Sätt nytt förnamn för vald Employee
                     employee.setFirstName(newFirstName);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + " name has been updated.");
                     break;
                 } else if (userInput.equals("3") || userInput.contains("last name")) {
-                    String newLastName = getNewEmployeeLastName();
+
+                    // Ropa på metod för att fråga användaren efter ett förnamn
+                    String newLastName = getNewEmployeeName("Enter employee last name: ");
+
+                    // Sätt nytt förnamn för vald Employee
                     employee.setFirstName(newLastName);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + " name has been updated.");
                     break;
                 } else if (userInput.equals("4") || userInput.contains("gender")) {
+
+                    // Ropa på metod för att fråga användaren efter ett Gender
                     Gender newGender = getNewEmployeeGender();
+
+                    // Sätt nytt Gender för vald Employee
                     employee.setGender(newGender);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + " gender has been changed to " + newGender);
                     break;
                 } else if (userInput.equals("5") || userInput.contains("date of birth")) {
+
+                    // Ropa på metod för att fråga användaren efter ett Date of Birth
                     Date newDateOfBirth = getNewEmployeeDateOfBirth();
+
+                    // Sätt nytt Date of Birth för vald Employee
                     employee.setDateOfBirth(newDateOfBirth);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + " date of birth has been changed to " + employee.getDateOfBirthString());
                     break;
                 } else if (userInput.equals("6") || userInput.contains("salary")) {
+
+                    // Ropa på metod för att fråga användaren efter en ny grundlön
                     int newBaseSalary = getNewEmployeeSalary();
+
+                    // Sätt nytt grundlön för vald Employee
                     employee.setBaseSalary(newBaseSalary);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + "'s base salary is now " + employee.getBaseSalary());
                     break;
                 } else if (userInput.equals("7") || userInput.contains("department")) {
+
+                    // Ropa på metod för att fråga användaren efter en ny Department
                     Department newDepartment = getNewEmployeeDepartment();
+
+                    // Sätt ny Department för vald Employee
                     employee.setDepartment(newDepartment);
+
+                    // Bekräfta ändringen och gå tillbaka
                     System.out.println(employee.getFullName() + " department changed to " + employee.getDepartment());
                     break;
-                } else if (userInput.equals("0") || userInput.contains("return") || userInput.contains("exit"))
-                    break updateMenuLoop;
+                } else if (userInput.equals("0") || userInput.contains("return") || userInput.contains("exit")) {
+                    break updateMenuLoop; // Break nested-loop, gå tillbaka till Employee Management menyn
                 } else {
-                    System.out.println("Unknown input. Try again!" + newLine);
+                    System.out.println("Unknown input. Try again!" + newLine); // Ingen match
                 }
             }
         }
     }
 
+    // Metod för menyn "Search employee"
+    // Tar vald Employee och visar all relevant data
     public static void employeeDisplayMenu(Employee employee) {
+
+        // Hämta data från vald Employee och skriv ut
         System.out.println("Name: " + employee.getFullName());
         System.out.println("Gender: " + employee.getGender());
         System.out.println("Date of birth: " + employee.getDateOfBirthString());
         System.out.println("ID: " + employee.getID());
         System.out.println("Department: " + employee.getDepartment());
         System.out.println("Category: " + employee.getCategory());
-        System.out.println("Salary: " + employee.getSalary() + " SEK" + newLine);
-    }
+        System.out.println("Salary: " + employee.getSalary() + " SEK (inkl. bonus)");
+        System.out.println("Bonus: " + employee.getBonus() + " SEK (+" + employee.getBonusPercentageDecimal() * 100 + "%)" + newLine);
 
-    public static Employee getEmployeeByIDFromInput() {
-        Employee returnObject = null;
-        System.out.println(newLine + "Enter employee ID: ");
-
-        Scanner scan = new Scanner(System.in);
-
-        while (true) {
-            try {
-                String userInput = scan.nextLine();
-                int inputID = Integer.parseInt(userInput);
-                returnObject = EmployeeHandler.findEmployee(inputID);
-                break;
-            } catch (NumberFormatException e) {
-                System.out.println("ID needs to be a whole number! Try again");
-            }
-        }
-
-        return returnObject;
-    }
-
-    public static Employee getEmployeeByNameFromInput() {
-        Employee returnObject = null;
-        System.out.println("\nEnter employees exact name: ");
-
-        Scanner scan = new Scanner(System.in);
-
-        while (true) {
-            String userInput = scan.nextLine();
-            ArrayList<Employee> resultList = EmployeeHandler.findEmployee(userInput);
-            if (resultList.isEmpty()) {
-                System.out.println("No employee found! Try again");
-            } else {
-                returnObject = resultList.get(0);
-                break;
-            }
-        }
-
-        return returnObject;
     }
 
 }

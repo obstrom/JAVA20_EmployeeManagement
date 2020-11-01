@@ -47,6 +47,9 @@ public class Secretary extends Employee {
     }
 
     @Override
+    double getBonusPercentageDecimal() { return BONUS; }
+
+    @Override
     EmployeeCategory getCategory() { return CATEGORY; }
 
 }
