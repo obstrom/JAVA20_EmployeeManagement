@@ -414,6 +414,7 @@ public class MenuEmployeeSystem {
             case REMOVE: {
                 // Ta bort Employee-objekt från ArrayListan med alla employees
                 EmployeeHandler.removeEmployee(employee);
+                break;
             }
             case UPDATE: {
                 // Ropa på metod för "update employee" menyn
