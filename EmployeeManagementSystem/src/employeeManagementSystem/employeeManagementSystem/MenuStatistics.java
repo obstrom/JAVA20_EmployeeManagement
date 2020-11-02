@@ -18,8 +18,6 @@ public class MenuStatistics {
             System.out.println("2-Highest salary at the company");
             System.out.println("3-Lowest salary at the company");
             System.out.println("4-Total bonus");
-            //System.out.println("5-Women in percentage in the company");
-            //System.out.println("6-Men percentage of the various work role categories ");
             System.out.println("0-Back to main menu");
 
             // Ta in text från användaren
